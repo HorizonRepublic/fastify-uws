@@ -1,5 +1,5 @@
 {
-  "name": "@geut/fastify-uws",
+  "name": "@horizon-republic/fastify-uws",
   "type": "module",
   "version": "6.0.0",
   "description": "uWebSockets.js for fastify",
@@ -24,12 +24,12 @@
   "exports": {
     ".": {
       "types": "./types/server.d.ts",
-      "import": "./src/server.js",
+      "import": "./dist/server.js",
       "require": "./dist/server.cjs"
     },
     "./plugin": {
       "types": "./types/plugin.d.ts",
-      "import": "./src/plugin.js",
+      "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs"
     },
     "./package.json": "./package.json"
@@ -47,7 +47,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "rm -rf dist && tsup src/server.js src/plugin.js --splitting && npm run types",
+    "build": "rm -rf dist && tsup src/server.js src/plugin.js --splitting --format esm,cjs --dts && npm run types",
     "test": "uvu --ignore tests/fastify",
     "posttest": "npm run lint && tsc",
     "lint": "eslint .",
